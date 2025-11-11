@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>微信 - 消息</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/message.css" /> <!-- 更新了路径 -->
+  <link rel="stylesheet" href="../css/style.css" /> <!-- 更新路径 -->
+  <link rel="stylesheet" href="../css/message.css" /> <!-- 更新路径 -->
 </head>
 <body>
   <div class="messages-page">
@@ -77,7 +77,13 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/message.js"></script> <!-- 更新了路径 -->
+  <script src="../js/main.js"></script> <!-- 更新路径 -->
+  <script src="../js/message.js"></script> <!-- 更新路径 -->
+  <script>
+    // 返回主界面的功能
+    function goBack() {
+      window.location.href = '../index.html';  // 返回到主界面
+    }
+  </script>
 </body>
 </html>
