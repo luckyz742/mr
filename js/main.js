@@ -27,16 +27,18 @@ keys.forEach(key => {
     const val = key.textContent.trim();
     if (key.classList.contains('empty')) return;
     if (key.classList.contains('delete')) {
-      input = input.slice(0, -1);
-    } else if (input.length < 6) {
-      input += val;
-    }
-    updateDots();
+  input = input.slice(0, -1);
+} else if (key.textContent.trim() && input.length < 6) {
+  input += key.textContent.trim();
+}
+updateDots();
 
-    if (input.length === 6) {
-      if (input === PASSWORD) unlock();
-      else errorShake();
-    }
+if (input.length === 6) {
+  setTimeout(() => {
+    if (input === PASSWORD) unlock();
+    else errorShake();
+  }, 200);
+}
   });
 });
 
