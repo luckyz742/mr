@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeChat</title>
+  <link rel="stylesheet" href="wechat.css">
+</head>
+<body>
+  <div class="wechat-container">
+    <!-- 导航栏 -->
+    <div class="navbar">
+      <button class="tab-btn active" data-tab="moments">朋友圈</button>
+      <button class="tab-btn" data-tab="contacts">联系人</button>
+      <button class="tab-btn" data-tab="profile">个人主页</button>
+    </div>
+
+    <!-- 朋友圈 -->
+    <div class="tab-content active" id="moments">
+      <div class="moments-header">
+        <img id="cover" src="https://i.postimg.cc/MpZgL0Qr/Image-1703828813622.jpg" class="cover">
+        <img id="avatar" src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" class="avatar">
+        <div class="name" id="username">我的昵称</div>
+      </div>
+      <div class="moments-feed" id="momentsFeed">
+        <div class="post"><b>小王：</b> 今天天气真好！☀️</div>
+        <div class="post"><b>Lucy：</b> 新手机真香～📱</div>
+        <div class="post"><b>David：</b> 有人一起打游戏吗？🎮</div>
+      </div>
+    </div>
+
+    <!-- 联系人 -->
+    <div class="tab-content" id="contacts">
+      <div class="contacts-header">
+        <span>联系人</span>
+        <button id="addBtn">➕</button>
+      </div>
+      <div class="contacts-list" id="contactsList"></div>
+
+      <!-- 弹窗 -->
+      <div class="popup" id="popup">
+        <button data-action="add-friend">添加好友</button>
+        <button data-action="add-group">添加群聊</button>
+        <button data-action="shake">摇一摇</button>
+      </div>
+
+      <!-- 添加好友页面 -->
+      <div class="add-page hidden" id="addPage">
+        <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" class="add-avatar">
+        <input type="text" id="friendCode" placeholder="输入6位好友代码">
+        <div class="btns">
+          <button id="addFriend">添加好友</button>
+          <button id="delFriend">删除好友</button>
+        </div>
+      </div>
+
+      <!-- 摇一摇页面 -->
+      <div class="shake-page hidden" id="shakePage">
+        <div class="phone-icon" id="phoneIcon"></div>
+        <p>摇一摇找朋友</p>
+      </div>
+
+      <!-- 随机朋友主页 -->
+      <div class="stranger hidden" id="stranger">
+        <img id="sAvatar" src="" class="s-avatar">
+        <div class="s-info">
+          <div id="sName"></div>
+          <div id="sID"></div>
+          <button id="viewMoments">查看朋友圈</button>
+          <button id="addContact">添加联系人</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 个人主页 -->
+    <div class="tab-content" id="profile">
+      <div class="profile-header">
+        <img id="pAvatar" src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" class="avatar">
+        <div>
+          <div id="pName">我的昵称</div>
+          <div id="pID">ID: 123456</div>
+        </div>
+      </div>
+
+      <div class="my-moments">
+        <h3>我的朋友圈</h3>
+        <div class="post">今天也要元气满满！💪</div>
+        <div class="post">学习前端中，冲！🚀</div>
+      </div>
+
+      <div class="settings">
+        <h3>设置</h3>
+        <label>更换头像: <input type="file" id="changeAvatar"></label>
+        <label>更换背景: <input type="file" id="changeCover"></label>
+        <label>修改昵称: <input type="text" id="changeName" placeholder="输入新昵称"></label>
+        <button id="saveSettings">保存修改</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="wechat.js"></script>
+</body>
+</html>
