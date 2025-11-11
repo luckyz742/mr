@@ -10,12 +10,14 @@ body {
 
 .phone {
   width: 350px;
-  height: 700px;
+  height: 650px; /* 调整高度以确保页面完整显示 */
   background: url('https://i.postimg.cc/YCrPjsJd/1762887848505.jpg') center/cover no-repeat;
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .lock-screen {
