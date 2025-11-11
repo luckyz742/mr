@@ -11,22 +11,6 @@
     <!-- 主屏幕 -->
     <div class="home-screen" id="homeScreen">
       
-      <!-- Dock 栏 -->
-      <div class="dock">
-        <div class="app-icon" onclick="goToPage('messages')">
-          <span>消息</span>
-        </div>
-        <div class="app-icon" onclick="goToPage('contacts')">
-          <span>联系人</span>
-        </div>
-        <div class="app-icon" onclick="goToPage('moments')">
-          <span>朋友圈</span>
-        </div>
-        <div class="app-icon" onclick="goToPage('profile')">
-          <span>个人主页</span>
-        </div>
-      </div>
-
       <!-- 消息页面 -->
       <div id="messages" class="page">
         <div class="header">
@@ -39,11 +23,9 @@
           <div class="option-item" onclick="addGroup()">添加群聊</div>
           <div class="option-item" onclick="shake()">摇一摇</div>
         </div>
-        <!-- 消息列表 -->
         <div class="chat-list">
           <!-- 聊天消息将动态添加到这里 -->
         </div>
-        <!-- 输入框 -->
         <div class="chat-input">
           <button class="send-button" onclick="sendMessage()">➤</button>
           <button class="attach-button" onclick="toggleOptions()">+</button>
@@ -74,6 +56,22 @@
           <span>个人主页</span>
         </div>
         <!-- 个人主页内容 -->
+      </div>
+
+      <!-- 底部 Dock 栏 -->
+      <div class="dock">
+        <div class="dock-item" onclick="goToPage('messages')">
+          <span>消息</span>
+        </div>
+        <div class="dock-item" onclick="goToPage('contacts')">
+          <span>联系人</span>
+        </div>
+        <div class="dock-item" onclick="goToPage('moments')">
+          <span>朋友圈</span>
+        </div>
+        <div class="dock-item" onclick="goToPage('profile')">
+          <span>个人主页</span>
+        </div>
       </div>
     </div>
   </div>
