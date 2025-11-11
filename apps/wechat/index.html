@@ -3,43 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeChat 聊天</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>WeChat</title>
+  <link rel="stylesheet" href="css/wechat.css" />
 </head>
 <body>
-  <div class="chat-container">
-    <!-- 顶部栏 -->
-    <div class="chat-header">
-      <div class="back-btn">←</div>
-      <div class="chat-title">WeChat 聊天</div>
+  <div class="wechat-app">
+    <!-- 底部导航 -->
+    <nav class="tab-bar">
+      <button class="tab active" data-target="chatPage">消息</button>
+      <button class="tab" data-target="contactsPage">联系人</button>
+      <button class="tab" data-target="momentsPage">朋友圈</button>
+      <button class="tab" data-target="profilePage">我</button>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div id="chatPage" class="page active">
+      <h3>消息界面</h3>
+      <div id="chatContent" class="chat-content"></div>
+      <div class="message-input">
+        <textarea id="messageInput" placeholder="请输入消息..."></textarea>
+        <button id="sendMessage">发送</button>
+      </div>
     </div>
 
-    <!-- 聊天区域 -->
-    <div class="chat-box" id="chatBox">
-      <!-- 聊天内容动态插入 -->
+    <div id="contactsPage" class="page">
+      <h3>联系人界面</h3>
+      <button class="addContactBtn">添加联系人</button>
+      <ul id="contactsList">
+        <!-- 联系人列表 -->
+      </ul>
     </div>
 
-    <!-- 输入区域 -->
-    <div class="chat-input">
-      <button id="moreBtn">＋</button>
-      <input type="text" id="msgInput" placeholder="输入消息..." />
-      <button id="sendBtn" class="send">✈️</button>
+    <div id="momentsPage" class="page">
+      <h3>朋友圈</h3>
+      <div id="momentsContent">
+        <!-- 朋友圈动态 -->
+      </div>
     </div>
 
-    <!-- 更多功能菜单 -->
-    <div class="more-menu" id="moreMenu">
-      <button>表情包</button>
-      <button>转账</button>
-      <button>红包</button>
-      <button>语音通话</button>
-      <button>视频通话</button>
-      <button>送礼物</button>
-      <button>位置</button>
-      <button>一起听</button>
-      <button>图片</button>
+    <div id="profilePage" class="page">
+      <h3>个人主页</h3>
+      <div id="profileContent">
+        <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="头像" class="avatar" id="profileAvatar">
+        <h4>用户名称</h4>
+        <button class="changeAvatarBtn">更换头像</button>
+        <button class="changeBackgroundBtn">更换背景</button>
+      </div>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/wechat.js"></script>
 </body>
 </html>
