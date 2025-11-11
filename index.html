@@ -14,98 +14,70 @@
         <div id="lockTime" class="lock-time">12:00</div>
         <div id="lockDate" class="lock-date">星期一, 1月1日</div>
       </div>
-
       <div class="lock-input">
         <div class="dots" id="dots"></div>
       </div>
-
       <div class="lock-keypad">
         <div class="key-row">
-          <button class="key" onclick="addPassword('1')">1</button>
-          <button class="key" onclick="addPassword('2')">2</button>
-          <button class="key" onclick="addPassword('3')">3</button>
+          <button class="key">1</button><button class="key">2</button><button class="key">3</button>
         </div>
         <div class="key-row">
-          <button class="key" onclick="addPassword('4')">4</button>
-          <button class="key" onclick="addPassword('5')">5</button>
-          <button class="key" onclick="addPassword('6')">6</button>
+          <button class="key">4</button><button class="key">5</button><button class="key">6</button>
         </div>
         <div class="key-row">
-          <button class="key" onclick="addPassword('7')">7</button>
-          <button class="key" onclick="addPassword('8')">8</button>
-          <button class="key" onclick="addPassword('9')">9</button>
+          <button class="key">7</button><button class="key">8</button><button class="key">9</button>
         </div>
         <div class="key-row">
-          <button class="key empty"></button>
-          <button class="key" onclick="addPassword('0')">0</button>
-          <button class="key delete" onclick="deletePassword()">⌫</button>
+          <button class="key empty"></button><button class="key">0</button><button class="key delete">⌫</button>
         </div>
       </div>
-
       <div class="lock-tip">输入密码解锁</div>
     </div>
 
     <!-- 主屏幕 -->
     <div class="home-screen" id="homeScreen" style="display:none;">
-  <h2 class="home-text" id="homeText">主屏幕已解锁 ✅</h2>
 
-  <!-- 主界面应用图标 -->
-  <div class="apps">
-    <!-- 应用图标 -->
-    <div class="app-icon" onclick="openApp('wechat')">
-      <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="WeChat" />
-      <span>WeChat</span>
-    </div>
-    <div class="app-icon" onclick="openApp('settings')">
-      <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg" alt="设置" />
-      <span>设置</span>
-    </div>
-    <div class="app-icon" onclick="openApp('netyellow')">
-      <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg" alt="网黄" />
-      <span>网黄</span>
-    </div>
-    <div class="app-icon" onclick="openApp('taobao')">
-      <img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="桃宝" />
-      <span>桃宝</span>
-    </div>
-    <div class="app-icon" onclick="openApp('tik')">
-      <img src="https://i.postimg.cc/PJ178sfk/1762874765459.jpg" alt="Tik" />
-      <span>Tik</span>
-    </div>
-    <div class="app-icon" onclick="openApp('music')">
-      <img src="https://i.postimg.cc/cLxz6bV3/1762887633550.jpg" alt="音乐" />
-      <span>音乐</span>
-    </div>
-    <div class="app-icon" onclick="openApp('bankcard')">
-      <img src="https://i.postimg.cc/2jWMtvQq/1762887648746.jpg" alt="银行卡" />
-      <span>银行卡</span>
-    </div>
-    <div class="app-icon" onclick="openApp('choutuan')">
-      <img src="https://i.postimg.cc/m2NqLs6P/1762887656621.jpg" alt="丑团" />
-      <span>丑团</span>
-    </div>
-    <div class="app-icon" onclick="openApp('memo')">
-      <img src="https://i.postimg.cc/zvTQRZzw/1762887687926.jpg" alt="备忘录" />
-      <span>备忘录</span>
-    </div>
-    <div class="app-icon" onclick="openApp('weibo')">
-      <img src="https://i.postimg.cc/15Z21tMy/1762887723874.jpg" alt="围脖" />
-      <span>围脖</span>
-    </div>
-    <div class="app-icon" onclick="openApp('weather')">
-      <img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="天气" />
-      <span>天气</span>
-    </div>
-    <div class="app-icon" onclick="openApp('inventory')">
-      <img src="https://i.postimg.cc/Fsgqr4nF/1762888336704.jpg" alt="库存" />
-      <span>库存</span>
-    </div>
-  </div>
+      <!-- 所有普通 App（每行三个） -->
+      <div class="apps">
+        <div class="app-icon" onclick="openApp('netyellow')">
+          <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg" alt="网黄" />
+          <span>网黄</span>
+        </div>
+        <div class="app-icon" onclick="openApp('taobao')">
+          <img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="桃宝" />
+          <span>桃宝</span>
+        </div>
+        <div class="app-icon" onclick="openApp('tik')">
+          <img src="https://i.postimg.cc/PJ178sfk/1762874765459.jpg" alt="Tik" />
+          <span>Tik</span>
+        </div>
+        <div class="app-icon" onclick="openApp('music')">
+          <img src="https://i.postimg.cc/cLxz6bV3/1762887633550.jpg" alt="音乐" />
+          <span>音乐</span>
+        </div>
+        <div class="app-icon" onclick="openApp('bankcard')">
+          <img src="https://i.postimg.cc/2jWMtvQq/1762887648746.jpg" alt="银行卡" />
+          <span>银行卡</span>
+        </div>
+        <div class="app-icon" onclick="openApp('choutuan')">
+          <img src="https://i.postimg.cc/m2NqLs6P/1762887656621.jpg" alt="丑团" />
+          <span>丑团</span>
+        </div>
+        <div class="app-icon" onclick="openApp('weibo')">
+          <img src="https://i.postimg.cc/15Z21tMy/1762887723874.jpg" alt="围脖" />
+          <span>围脖</span>
+        </div>
+        <div class="app-icon" onclick="openApp('weather')">
+          <img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="天气" />
+          <span>天气</span>
+        </div>
+        <div class="app-icon" onclick="openApp('inventory')">
+          <img src="https://i.postimg.cc/Fsgqr4nF/1762888336704.jpg" alt="库存" />
+          <span>库存</span>
+        </div>
+      </div>
 
-  <!-- 底部Dock栏 -->
-  <div class="dock
-
-      <!-- 底部Dock栏 -->
+      <!-- Dock 栏 -->
       <div class="dock">
         <div class="app-icon" onclick="openApp('wechat')">
           <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="WeChat" />
