@@ -1,0 +1,141 @@
+body {
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.phone {
+  width: 380px;
+  height: 740px;
+  background: #000;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 25px;
+  background: black;
+  border-radius: 0 0 20px 20px;
+  z-index: 10;
+}
+
+.lock-screen {
+  position: absolute;
+  inset: 0;
+  background: url('https://i.postimg.cc/MpZgL0Qr/Image-1703828813622.jpg') center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+
+.lock-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lock-time {
+  font-size: 70px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.lock-date {
+  font-size: 18px;
+  margin-bottom: 100px;
+}
+
+.unlock {
+  font-size: 16px;
+  opacity: 0.8;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+
+.home-screen {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=600&q=60') center/cover;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.home-screen.active {
+  display: flex;
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  justify-items: center;
+  margin-top: 40px;
+  width: 90%;
+}
+
+.app-icon {
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.app-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.app-icon:hover img {
+  transform: scale(1.1);
+}
+
+.app-icon span {
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.app-container {
+  position: absolute;
+  inset: 0;
+  background: white;
+  display: none;
+  flex-direction: column;
+}
+
+#appFrame {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+#backHome {
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin: 8px;
+  cursor: pointer;
+}

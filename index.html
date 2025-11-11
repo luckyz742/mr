@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仿 iPhone 桌面</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="phone">
+    <div class="notch"></div>
+
+    <!-- 锁屏 -->
+    <div class="lock-screen" id="lockScreen">
+      <div class="lock-time" id="time">12:00</div>
+      <div class="lock-date" id="date">星期一, 1月1日</div>
+      <div class="unlock">滑动解锁 →</div>
+      <div class="password" id="password">
+        <input type="password" maxlength="4" placeholder="输入 4 位密码">
+        <button id="unlockBtn">解锁</button>
+      </div>
+    </div>
+
+    <!-- 桌面 -->
+    <div class="home-screen" id="homeScreen">
+      <div class="apps">
+        <div class="app-icon" data-app="wechat">
+          <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg">
+          <span>WeChat</span>
+        </div>
+        <div class="app-icon" data-app="settings">
+          <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg">
+          <span>设置</span>
+        </div>
+        <div class="app-icon" data-app="notes">
+          <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg">
+          <span>备忘录</span>
+        </div>
+        <div class="app-icon" data-app="music">
+          <img src="https://i.postimg.cc/prx27hxR/1762874743138.jpg">
+          <span>音乐</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 窗口 -->
+    <div class="app-container" id="appContainer">
+      <button id="backHome">← 返回桌面</button>
+      <iframe id="appFrame" src=""></iframe>
+    </div>
+  </div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
