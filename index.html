@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>仿 iPhone 桌面</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPhone Lock Screen</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="phone">
-    <div class="notch"></div>
-
-    <!-- 锁屏 -->
+    <!-- 锁屏界面 -->
     <div class="lock-screen" id="lockScreen">
-      <div class="lock-time" id="time">12:00</div>
-      <div class="lock-date" id="date">星期一, 1月1日</div>
-      <div class="unlock">滑动解锁 →</div>
-      <div class="password" id="password">
-        <input type="password" maxlength="4" placeholder="输入 4 位密码" id="pwdInput">
-        <button id="unlockBtn">解锁</button>
+      <div class="lock-info">
+        <div id="lockTime" class="lock-time">12:00</div>
+        <div id="lockDate" class="lock-date">星期一, 1月1日</div>
       </div>
+
+      <div class="lock-input">
+        <div class="dots" id="dots"></div>
+      </div>
+
+      <div class="lock-keypad">
+        <div class="key-row">
+          <button class="key">1</button>
+          <button class="key">2</button>
+          <button class="key">3</button>
+        </div>
+        <div class="key-row">
+          <button class="key">4</button>
+          <button class="key">5</button>
+          <button class="key">6</button>
+        </div>
+        <div class="key-row">
+          <button class="key">7</button>
+          <button class="key">8</button>
+          <button class="key">9</button>
+        </div>
+        <div class="key-row">
+          <button class="key empty"></button>
+          <button class="key">0</button>
+          <button class="key delete">⌫</button>
+        </div>
+      </div>
+
+      <div class="lock-tip">输入密码解锁</div>
     </div>
 
-    <!-- 桌面 -->
-    <div class="home-screen" id="homeScreen">
-      <div class="apps">
-        <div class="app-icon" data-app="wechat">
-          <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg">
-          <span>WeChat</span>
-        </div>
-        <div class="app-icon" data-app="settings">
-          <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg">
-          <span>设置</span>
-        </div>
-        <div class="app-icon" data-app="notes">
-          <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg">
-          <span>备忘录</span>
-        </div>
-        <div class="app-icon" data-app="music">
-          <img src="https://i.postimg.cc/prx27hxR/1762874743138.jpg">
-          <span>音乐</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- App 窗口 -->
-    <div class="app-container" id="appContainer">
-      <button id="backHome">← 返回桌面</button>
-      <iframe id="appFrame" src=""></iframe>
+    <!-- 主屏幕（暂时空） -->
+    <div class="home-screen" id="homeScreen" style="display:none;">
+      <h2 class="home-text">主屏幕已解锁 ✅</h2>
     </div>
   </div>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
