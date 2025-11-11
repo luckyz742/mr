@@ -27,70 +27,50 @@ function openApp(appName) {
   }
 }
 
-let password = "";
-function addPassword(num) {
-  password += num;
-  if (password.length === 4) {
-    if (password === "1234") { // 假设密码是 1234
-      document.getElementById("lockScreen").style.display = "none"; // 锁屏消失
-      document.getElementById("homeScreen").style.display = "block"; // 主屏幕显示
-      document.getElementById("homeText").style.display = "none"; // "主屏幕已解锁"文本消失
+let isLocked = true;  // 默认是锁定状态
+let enteredPassword = "";  // 存储用户输入的密码
+
+// 设置正确密码
+const correctPassword = "050608";
+
+// 获取页面元素
+const lockScreen = document.getElementById("lockScreen");
+const homeScreen = document.getElementById("homeScreen");
+const lockInput = document.getElementById("lockInput");
+const dots = document.getElementById("dots");
+
+// 监听密码按键
+const keys = document.querySelectorAll(".key");
+keys.forEach((key) => {
+  key.addEventListener("click", () => {
+    if (key.textContent === "⌫") {
+      // 删除最后一个输入的字符
+      enteredPassword = enteredPassword.slice(0, -1);
     } else {
-      password = ""; // 错误密码，清空
-      alert("密码错误");
+      // 添加数字到输入密码
+      enteredPassword += key.textContent;
     }
-  }
-}
 
-function deletePassword() {
-  password = password.slice(0, -1); // 删除密码的最后一位
-}
-let password = "1234";  // 设置密码
-let inputPassword = "";  // 当前输入的密码
-let lockScreen = document.getElementById("lockScreen");
-let homeScreen = document.getElementById("homeScreen");
-let dots = document.getElementById("dots");
-let lockTip = document.querySelector(".lock-tip");
+    // 更新显示的点
+    dots.innerHTML = "";
+    for (let i = 0; i < enteredPassword.length; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      dots.appendChild(dot);
+    }
 
-// 处理按键输入
-function addDigit(digit) {
-  inputPassword += digit;
-  updateDots();
-  
-  // 如果密码输入正确，跳转到主屏幕
-  if (inputPassword.length === password.length) {
-    if (inputPassword === password) {
-      unlockPhone();
-    } else {
-      inputPassword = "";  // 重置输入
-      updateDots();
-      lockTip.textContent = "密码错误，请重试";
+    // 如果密码正确，则解锁
+    if (enteredPassword.length === 6 && enteredPassword === correctPassword) {
       setTimeout(() => {
-        lockTip.textContent = "输入密码解锁";
-      }, 1500);
+        unlockPhone();
+      }, 500);  // 解锁延迟
     }
-  }
-}
-
-// 删除输入的最后一位
-function deleteDigit() {
-  inputPassword = inputPassword.slice(0, -1);
-  updateDots();
-}
-
-// 更新密码框的点
-function updateDots() {
-  dots.innerHTML = "";
-  for (let i = 0; i < inputPassword.length; i++) {
-    dots.innerHTML += "●";
-  }
-  for (let i = inputPassword.length; i < password.length; i++) {
-    dots.innerHTML += "○";
-  }
-}
+  });
+});
 
 // 解锁手机
 function unlockPhone() {
-  lockScreen.style.display = "none";
-  homeScreen.style.display = "block";
+  isLocked = false;
+  lockScreen.style.display = "none";  // 隐藏锁屏
+  homeScreen.style.display = "flex";  // 显示主屏幕
 }
