@@ -32,8 +32,9 @@ function addPassword(num) {
   password += num;
   if (password.length === 4) {
     if (password === "1234") { // 假设密码是 1234
-      document.getElementById("lockScreen").style.display = "none";
-      document.getElementById("homeScreen").style.display = "block";
+      document.getElementById("lockScreen").style.display = "none"; // 锁屏消失
+      document.getElementById("homeScreen").style.display = "block"; // 主屏幕显示
+      document.getElementById("homeText").style.display = "none"; // "主屏幕已解锁"文本消失
     } else {
       password = ""; // 错误密码，清空
       alert("密码错误");
