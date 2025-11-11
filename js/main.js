@@ -55,10 +55,50 @@ function updateDots() {
 // 密码正确 → 解锁
 function unlock() {
   lockScreen.style.opacity = '0';
+
+  // 延迟让淡出动画完成
   setTimeout(() => {
     lockScreen.style.display = 'none';
     homeScreen.style.display = 'flex';
+    homeScreen.style.opacity = '0';
+
+    // 淡入“已解锁”提示
+    setTimeout(() => {
+      homeScreen.style.transition = 'opacity 0.6s';
+      homeScreen.style.opacity = '1';
+    }, 100);
+
+    // 1.5 秒后淡出提示
+    setTimeout(() => {
+      homeScreen.style.transition = 'opacity 0.8s';
+      homeScreen.style.opacity = '0';
+    }, 1500);
+
+    // 2.3 秒后清空提示，为后续主屏准备
+    setTimeout(() => {
+      homeScreen.style.display = 'none';
+      showHomeScreen();
+    }, 2300);
   }, 600);
+}
+
+// 显示真正主屏幕（后续会放App图标）
+function showHomeScreen() {
+  const mainDiv = document.createElement('div');
+  mainDiv.classList.add('real-home');
+  mainDiv.innerHTML = `
+    <div class="status-bar">
+      <span id="timeMini">${timeEl.textContent}</span>
+      <span class="icons">📶 🔋</span>
+    </div>
+    <div class="home-icons">
+      <div class="app">WeChat</div>
+      <div class="app">设置</div>
+      <div class="app">音乐</div>
+      <div class="app">照片</div>
+    </div>
+  `;
+  document.querySelector('.phone').appendChild(mainDiv);
 }
 
 // 密码错误 → 抖动并清空
