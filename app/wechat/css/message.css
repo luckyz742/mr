@@ -12,6 +12,20 @@
   color: white;
 }
 
+.header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 消息列表 */
 .chat-list {
   flex: 1;
   overflow-y: auto;
@@ -21,10 +35,50 @@
 .chat-item {
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+.unread-count {
+  background-color: #ff4c4c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.last-message {
+  color: #666;
+  font-size: 14px;
+}
+
+/* 输入框和按钮 */
 .input-section {
+  display: flex;
+  align-items: center;
   padding: 10px;
   background-color: white;
   border-top: 1px solid #ddd;
@@ -35,6 +89,7 @@
   padding: 8px;
   border-radius: 15px;
   border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 .send-button, .attach-button {
@@ -43,4 +98,28 @@
   color: #07c160;
   font-size: 24px;
   cursor: pointer;
+  margin-left: 10px;
+}
+
+/* 弹出选项菜单 */
+.options-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  width: 150px;
+}
+
+.option-item {
+  padding: 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+.option-item:hover {
+  background-color: #f0f0f0;
 }
