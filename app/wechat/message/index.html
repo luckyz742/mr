@@ -13,21 +13,26 @@
     <div class="header">
       <button class="back-button" onclick="goBack()">←</button>
       <span>消息</span>
-      <button class="plus-button" onclick="toggleOptions()">➕</button>
+      <button class="plus-button" onclick="togglePlusOptions()">➕</button>
     </div>
 
-    <!-- 弹出的选项框 -->
-    <div id="optionsMenu" class="options-menu">
+    <!-- 弹出的右上角选项框（“添加联系人”，“添加群聊”等） -->
+    <div id="plusOptionsMenu" class="options-menu">
       <div class="option-item" onclick="addContact()">添加联系人</div>
       <div class="option-item" onclick="addGroup()">添加群聊</div>
       <div class="option-item" onclick="shake()">摇一摇</div>
+    </div>
+
+    <!-- 左侧 - 按钮的选项框（“表情包”，“红包”等） -->
+    <div id="minusOptionsMenu" class="options-menu">
+      <div class="option-item" onclick="sendEmoji()">表情包</div>
+      <div class="option-item" onclick="sendImage()">图片</div>
       <div class="option-item" onclick="sendRedPacket()">红包</div>
       <div class="option-item" onclick="sendTransfer()">转账</div>
-      <div class="option-item" onclick="sendGift()">送礼物</div>
       <div class="option-item" onclick="sendVoice()">语音</div>
-      <div class="option-item" onclick="sendVideo()">视频通话</div>
-      <div class="option-item" onclick="sendLocation()">位置</div>
-      <div class="option-item" onclick="shareMusic()">共享音乐</div>
+      <div class="option-item" onclick="sendVoiceCall()">语音通话</div>
+      <div class="option-item" onclick="sendGift()">送礼物</div>
+      <div class="option-item" onclick="shareMusic()">一起听</div>
     </div>
 
     <!-- 消息列表 -->
@@ -50,7 +55,7 @@
     <div class="input-section">
       <input type="text" id="messageInput" placeholder="输入消息..." />
       <button class="send-button" onclick="sendMessage()">➤</button>
-      <button class="attach-button" onclick="toggleOptions()">+</button>
+      <button class="attach-button" onclick="toggleMinusOptions()">-</button>
     </div>
   </div>
 
