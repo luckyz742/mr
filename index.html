@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -19,21 +19,29 @@
       </div>
       <div class="lock-keypad">
         <div class="key-row">
-          <button class="key">1</button><button class="key">2</button><button class="key">3</button>
+          <button class="key" onclick="addDigit(1)">1</button>
+          <button class="key" onclick="addDigit(2)">2</button>
+          <button class="key" onclick="addDigit(3)">3</button>
         </div>
         <div class="key-row">
-          <button class="key">4</button><button class="key">5</button><button class="key">6</button>
+          <button class="key" onclick="addDigit(4)">4</button>
+          <button class="key" onclick="addDigit(5)">5</button>
+          <button class="key" onclick="addDigit(6)">6</button>
         </div>
         <div class="key-row">
-          <button class="key">7</button><button class="key">8</button><button class="key">9</button>
+          <button class="key" onclick="addDigit(7)">7</button>
+          <button class="key" onclick="addDigit(8)">8</button>
+          <button class="key" onclick="addDigit(9)">9</button>
         </div>
         <div class="key-row">
-          <button class="key empty"></button><button class="key">0</button><button class="key delete">⌫</button>
+          <button class="key empty"></button>
+          <button class="key" onclick="addDigit(0)">0</button>
+          <button class="key delete" onclick="deleteDigit()">⌫</button>
         </div>
       </div>
       <div class="lock-tip">输入密码解锁</div>
     </div>
-
+    
     <!-- 主屏幕 -->
     <div class="home-screen" id="homeScreen" style="display:none;">
 
