@@ -1,94 +1,68 @@
-const chatBox = document.getElementById('chatBox');
-const msgInput = document.getElementById('msgInput');
-const sendBtn = document.getElementById('sendBtn');
-const moreBtn = document.getElementById('moreBtn');
-const moreMenu = document.getElementById('moreMenu');
+// WeChat 代码实现
 
-let lastSpeaker = null;
-
-// 切换更多菜单
-moreBtn.addEventListener('click', () => {
-  moreMenu.style.display = moreMenu.style.display === 'flex' ? 'none' : 'flex';
-});
-
-// 发送按钮
-sendBtn.addEventListener('click', () => {
-  const text = msgInput.value.trim();
-  if (text) {
-    sendMessage(text);
-    msgInput.value = '';
-  }
-});
-
-function sendMessage(content) {
-  addMessage('me', content);
-
-  const thinkBubble = addThinkingBubble();
-
-  setTimeout(() => {
-    removeThinkingBubble(thinkBubble);
-    const replies = generateAIReplies(content);
-    replies.forEach((txt, i) => {
-      setTimeout(() => addMessage('ai', txt), i * 1300);
+// 页面切换
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    
+    const targetPage = tab.getAttribute('data-target');
+    document.querySelectorAll('.page').forEach(page => {
+      if (page.id === targetPage) {
+        page.classList.add('active');
+      } else {
+        page.classList.remove('active');
+      }
     });
-  }, 1000 + Math.random() * 1000);
-}
+  });
+});
 
-function addMessage(role, text) {
-  let group = chatBox.querySelector(`.message-group.${role}:last-child`);
-  if (!group || lastSpeaker !== role) {
-    group = document.createElement('div');
-    group.className = `message-group ${role}`;
-    group.innerHTML = `
-      <img src="../assets/${role}-avatar.png" class="avatar">
-      <div class="bubbles"></div>
-    `;
-    chatBox.appendChild(group);
+// 发送消息
+document.getElementById('sendMessage').addEventListener('click', () => {
+  const messageInput = document.getElementById('messageInput');
+  const message = messageInput.value.trim();
+  
+  if (message) {
+    const chatContent = document.getElementById('chatContent');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', 'my-message');
+    messageDiv.textContent = message;
+    chatContent.appendChild(messageDiv);
+    messageInput.value = '';
+    
+    // 自动滚动到底部
+    chatContent.scrollTop = chatContent.scrollHeight;
   }
+});
 
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  bubble.textContent = text;
-  group.querySelector('.bubbles').appendChild(bubble);
-  lastSpeaker = role;
-  scrollToBottom();
-}
+// 更换头像
+document.querySelector('.changeAvatarBtn').addEventListener('click', () => {
+  const newAvatar = prompt("请输入新头像的URL：");
+  if (newAvatar) {
+    document.getElementById('profileAvatar').src = newAvatar;
+  }
+});
 
-function addThinkingBubble() {
-  const group = document.createElement('div');
-  group.className = 'message-group ai';
-  group.innerHTML = `
-    <img src="../assets/ai-avatar.png" class="avatar">
-    <div class="bubbles">
-      <div class="bubble thinking">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-  `;
-  chatBox.appendChild(group);
-  scrollToBottom();
-  return group;
-}
+// 添加联系人
+document.querySelector('.addContactBtn').addEventListener('click', () => {
+  const contactName = prompt("请输入联系人姓名：");
+  if (contactName) {
+    const contactList = document.getElementById('contactsList');
+    const contactItem = document.createElement('li');
+    contactItem.textContent = contactName;
+    contactList.appendChild(contactItem);
+  }
+});
 
-function removeThinkingBubble(group) {
-  if (group && group.parentNode) group.remove();
-}
-
-function generateAIReplies(content) {
-  const base = [
-    "哈哈，这个我懂 😆",
-    "你说得挺有趣的。",
-    "这让我想起了别的事情～",
-    "是啊，有点意思。",
-    "😂",
-    "👍",
-  ];
-  const count = Math.floor(Math.random() * 2) + 1;
-  return base.sort(() => 0.5 - Math.random()).slice(0, count);
-}
-
-function scrollToBottom() {
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
+// 朋友圈动态加载
+const momentsContent = document.getElementById('momentsContent');
+momentsContent.innerHTML = `
+  <div class="moment">
+    <p>我今天过得很开心！</p>
+    <button>点赞</button>
+  </div>
+  <div class="moment">
+    <p>这真是一个美丽的日子</p>
+    <button>点赞</button>
+  </div>
+`;
