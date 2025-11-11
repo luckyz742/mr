@@ -5,15 +5,15 @@ function goBack() {
 }
 
 // 控制显示/隐藏右上角选项菜单
-function togglePlusOptions() {
-  const plusOptionsMenu = document.getElementById('plusOptionsMenu');
-  plusOptionsMenu.style.display = plusOptionsMenu.style.display === 'block' ? 'none' : 'block';
+function toggleOptions() {
+  const optionsMenu = document.getElementById('optionsMenu');
+  optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
 }
 
 // 控制显示/隐藏左侧 - 按钮的菜单
-function toggleMinusOptions() {
-  const minusOptionsMenu = document.getElementById('minusOptionsMenu');
-  minusOptionsMenu.style.display = minusOptionsMenu.style.display === 'block' ? 'none' : 'block';
+function togglePlusOptions() {
+  const optionsMenu = document.getElementById('optionsMenu');
+  optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
 }
 
 // 发送消息
@@ -30,7 +30,10 @@ function sendMessage() {
         <div class="chat-header">
           <span class="contact-name">我</span>
         </div>
-        <div class="last-message">${message}</div>
+        <div class="last-message">
+          <span class="message-text">${message}</span>
+          <span class="message-time">刚刚</span>
+        </div>
       </div>
     `;
     chatList.appendChild(messageContainer);
@@ -80,16 +83,10 @@ function shareMusic() {
 
 // 点击外部区域时关闭菜单
 document.addEventListener('click', function(event) {
-  const plusOptionsMenu = document.getElementById('plusOptionsMenu');
-  const minusOptionsMenu = document.getElementById('minusOptionsMenu');
+  const optionsMenu = document.getElementById('optionsMenu');
   const plusButton = document.querySelector('.plus-button');
-  const minusButton = document.querySelector('.attach-button');
   
-  if (!plusOptionsMenu.contains(event.target) && event.target !== plusButton) {
-    plusOptionsMenu.style.display = 'none';
-  }
-  
-  if (!minusOptionsMenu.contains(event.target) && event.target !== minusButton) {
-    minusOptionsMenu.style.display = 'none';
+  if (!optionsMenu.contains(event.target) && event.target !== plusButton) {
+    optionsMenu.style.display = 'none';
   }
 });
