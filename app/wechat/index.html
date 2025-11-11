@@ -1,15 +1,83 @@
-<!-- Dock 栏 -->
-<div class="dock">
-  <div class="app-icon" onclick="goToPage('messages')">
-    <span>消息</span>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeChat</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="phone">
+    <!-- 主屏幕 -->
+    <div class="home-screen" id="homeScreen">
+      
+      <!-- Dock 栏 -->
+      <div class="dock">
+        <div class="app-icon" onclick="goToPage('messages')">
+          <span>消息</span>
+        </div>
+        <div class="app-icon" onclick="goToPage('contacts')">
+          <span>联系人</span>
+        </div>
+        <div class="app-icon" onclick="goToPage('moments')">
+          <span>朋友圈</span>
+        </div>
+        <div class="app-icon" onclick="goToPage('profile')">
+          <span>个人主页</span>
+        </div>
+      </div>
+
+      <!-- 消息页面 -->
+      <div id="messages" class="page">
+        <div class="header">
+          <button class="back-button" onclick="goBack()">←</button>
+          <span>消息</span>
+          <button class="plus-button" onclick="toggleOptions()">➕</button>
+        </div>
+        <div id="optionsMenu" class="options-menu">
+          <div class="option-item" onclick="addContact()">添加联系人</div>
+          <div class="option-item" onclick="addGroup()">添加群聊</div>
+          <div class="option-item" onclick="shake()">摇一摇</div>
+        </div>
+        <!-- 消息列表 -->
+        <div class="chat-list">
+          <!-- 聊天消息将动态添加到这里 -->
+        </div>
+        <!-- 输入框 -->
+        <div class="chat-input">
+          <button class="send-button" onclick="sendMessage()">➤</button>
+          <button class="attach-button" onclick="toggleOptions()">+</button>
+          <input type="text" id="messageInput" placeholder="输入消息..." />
+        </div>
+      </div>
+
+      <!-- 其他页面: 联系人，朋友圈，个人主页 -->
+      <div id="contacts" class="page" style="display: none;">
+        <div class="header">
+          <button class="back-button" onclick="goBack()">←</button>
+          <span>联系人</span>
+        </div>
+        <!-- 联系人内容 -->
+      </div>
+
+      <div id="moments" class="page" style="display: none;">
+        <div class="header">
+          <button class="back-button" onclick="goBack()">←</button>
+          <span>朋友圈</span>
+        </div>
+        <!-- 朋友圈内容 -->
+      </div>
+
+      <div id="profile" class="page" style="display: none;">
+        <div class="header">
+          <button class="back-button" onclick="goBack()">←</button>
+          <span>个人主页</span>
+        </div>
+        <!-- 个人主页内容 -->
+      </div>
+    </div>
   </div>
-  <div class="app-icon" onclick="goToPage('contacts')">
-    <span>联系人</span>
-  </div>
-  <div class="app-icon" onclick="goToPage('moments')">
-    <span>朋友圈</span>
-  </div>
-  <div class="app-icon" onclick="goToPage('profile')">
-    <span>个人主页</span>
-  </div>
-</div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
