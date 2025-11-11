@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeChat 朋友圈</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wechat-app">
+
+    <!-- 顶部导航栏 -->
+    <div class="wechat-header">
+      <h2>朋友圈</h2>
+    </div>
+
+    <!-- 自己的背景 + 头像 -->
+    <div class="moment-header">
+      <img src="../../images/bg.jpg" alt="背景" class="moment-bg">
+      <div class="avatar-section">
+        <img src="../../images/avatar.jpg" alt="我的头像" class="avatar">
+        <span class="username">我自己</span>
+      </div>
+    </div>
+
+    <!-- 动态内容区 -->
+    <div class="moments-list" id="momentsList">
+      <!-- 动态项会通过JS生成 -->
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+      <button class="active">朋友圈</button>
+      <button>联系人</button>
+      <button>我的</button>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
