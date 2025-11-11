@@ -3,54 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iPhone Lock Screen</title>
+  <title>iPhone 主屏幕</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    }
+
+    .phone {
+      width: 390px;
+      height: 844px;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      background: url("https://i.postimg.cc/YCrPjsJd/1762887848505.jpg") center/cover no-repeat;
+      position: relative;
+    }
+
+    /* 🔒 锁屏界面 */
+    .lock-screen {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s;
+      z-index: 10;
+    }
+
+    .lock-time {
+      font-size: 60px;
+      font-weight: 300;
+    }
+    .lock-date {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* 🏠 主屏幕 */
+    .home-screen {
+      position: absolute;
+      inset: 0;
+      background: url("https://i.postimg.cc/YCrPjsJd/1762887848505.jpg") center/cover no-repeat;
+      color: white;
+      display: none;
+      overflow: hidden;
+    }
+
+    .page {
+      padding: 120px 25px 140px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    /* 🧭 Dock 栏 */
+    .dock {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 90px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* App 图标 */
+    .app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    .app img {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      margin-bottom: 5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+
+    .app:hover {
+      transform: scale(1.05);
+    }
+
+    /* 🌀 长按抖动动画 */
+    .app.shake {
+      animation: shake 0.25s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-2deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* ❌ 删除按钮 */
+    .delete-btn {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 18px;
+      height: 18px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .app.shake .delete-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
 </head>
 <body>
   <div class="phone">
-    <!-- 锁屏界面 -->
+    <!-- 🔒 锁屏界面 -->
     <div class="lock-screen" id="lockScreen">
-      <div class="lock-info">
-        <div id="lockTime" class="lock-time">12:00</div>
-        <div id="lockDate" class="lock-date">星期一, 1月1日</div>
-      </div>
-
-      <div class="lock-input">
-        <div class="dots" id="dots"></div>
-      </div>
-
-      <div class="lock-keypad">
-        <div class="key-row">
-          <button class="key">1</button>
-          <button class="key">2</button>
-          <button class="key">3</button>
-        </div>
-        <div class="key-row">
-          <button class="key">4</button>
-          <button class="key">5</button>
-          <button class="key">6</button>
-        </div>
-        <div class="key-row">
-          <button class="key">7</button>
-          <button class="key">8</button>
-          <button class="key">9</button>
-        </div>
-        <div class="key-row">
-          <button class="key empty"></button>
-          <button class="key">0</button>
-          <button class="key delete">⌫</button>
-        </div>
-      </div>
-
-      <div class="lock-tip">输入密码解锁</div>
+      <div class="lock-time" id="lockTime">12:00</div>
+      <div class="lock-date" id="lockDate">星期一, 1月1日</div>
+      <div class="lock-tip">点击屏幕解锁</div>
     </div>
 
-    <!-- 主屏幕（暂时空） -->
-    <div class="home-screen" id="homeScreen" style="display:none;">
-      <h2 class="home-text">主屏幕已解锁 ✅</h2>
+    <!-- 🏠 主屏幕 -->
+    <div class="home-screen" id="homeScreen">
+      <div class="page">
+        <!-- 所有主要 App -->
+        <div class="app" onclick="openApp('taobao')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="桃宝">
+          <span>桃宝</span>
+        </div>
+        <div class="app" onclick="openApp('tik')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/PJ178sfk/1762874765459.jpg" alt="Tik">
+          <span>Tik</span>
+        </div>
+        <div class="app" onclick="openApp('music')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/cLxz6bV3/1762887633550.jpg" alt="音乐">
+          <span>音乐</span>
+        </div>
+        <div class="app" onclick="openApp('weibo')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/15Z21tMy/1762887723874.jpg" alt="围脖">
+          <span>围脖</span>
+        </div>
+        <div class="app" onclick="openApp('weather')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="天气">
+          <span>天气</span>
+        </div>
+        <div class="app" onclick="openApp('bank')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/2jWMtvQq/1762887648746.jpg" alt="银行卡">
+          <span>银行卡</span>
+        </div>
+        <div class="app" onclick="openApp('choutuan')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/m2NqLs6P/1762887656621.jpg" alt="丑团">
+          <span>丑团</span>
+        </div>
+        <div class="app" onclick="openApp('wanghuang')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg" alt="网黄">
+          <span>网黄</span>
+        </div>
+        <div class="app" onclick="openApp('inventory')">
+          <div class="delete-btn">×</div>
+          <img src="https://i.postimg.cc/Fsgqr4nF/1762888336704.jpg" alt="库存">
+          <span>库存</span>
+        </div>
+      </div>
+
+      <!-- 🧭 Dock 栏 -->
+      <div class="dock">
+        <div class="app" onclick="openApp('wechat')">
+          <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="WeChat">
+        </div>
+        <div class="app" onclick="openApp('notes')">
+          <img src="https://i.postimg.cc/zvTQRZzw/1762887687926.jpg" alt="备忘录">
+        </div>
+        <div class="app" onclick="openApp('settings')">
+          <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg" alt="设置">
+        </div>
+      </div>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script>
+    // 🔓 解锁逻辑
+    const lockScreen = document.getElementById('lockScreen');
+    const homeScreen = document.getElementById('homeScreen');
+    lockScreen.addEventListener('click', () => {
+      lockScreen.style.opacity = '0';
+      setTimeout(() => {
+        lockScreen.style.display = 'none';
+        homeScreen.style.display = 'block';
+      }, 400);
+    });
+
+    // 🌀 长按抖动模式
+    let editMode = false;
+    let holdTimer;
+    document.querySelectorAll('.app').forEach(app => {
+      app.addEventListener('touchstart', () => {
+        holdTimer = setTimeout(() => {
+          editMode = !editMode;
+          document.querySelectorAll('.app').forEach(a => {
+            a.classList.toggle('shake', editMode);
+          });
+        }, 600);
+      });
+      app.addEventListener('touchend', () => clearTimeout(holdTimer));
+    });
+
+    // ❌ 删除图标
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        e.target.parentElement.remove();
+      });
+    });
+
+    // 打开App
+    function openApp(appName) {
+      if (editMode) return;
+      window.location.href = `apps/${appName}/index.html`;
+    }
+  </script>
 </body>
 </html>
