@@ -25,6 +25,10 @@ body {
   background: rgba(0,0,0,0.4);
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .lock-time {
@@ -98,6 +102,7 @@ body {
   justify-content: space-between;
   padding-top: 60px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .apps {
@@ -135,4 +140,21 @@ body {
   padding: 10px 0;
   border-radius: 20px;
   margin-bottom: 20px;
+}
+
+.dock .app-icon {
+  flex-direction: column;
+}
+
+.dock img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.dock span {
+  font-size: 10px;
+  color: white;
+  margin-top: 4px;
 }
