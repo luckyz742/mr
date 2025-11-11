@@ -1,41 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeChat</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <div class="wechat-app">
-    <!-- WeChat 应用内容 -->
-    <div class="wechat-header">
-      <h2>WeChat</h2>
-      <button class="settings-btn">设置</button>
-    </div>
-
-    <div class="wechat-content">
-      <div class="profile">
-        <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="头像" class="profile-avatar" />
-        <button class="change-avatar-btn">更换头像</button>
-      </div>
-      <div class="messages">
-        <h3>消息</h3>
-        <ul>
-          <li>张三: 今天过得怎么样？</li>
-          <li>李四: 约一下吗？</li>
-          <li>王五: 你收到我的消息了吗？</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="wechat-footer">
-      <button class="shake-btn">摇一摇</button>
-      <button class="contacts-btn">联系人</button>
-      <button class="moments-btn">朋友圈</button>
-    </div>
+<!-- Dock 栏 -->
+<div class="dock">
+  <div class="app-icon" onclick="goToPage('messages')">
+    <span>消息</span>
   </div>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+  <div class="app-icon" onclick="goToPage('contacts')">
+    <span>联系人</span>
+  </div>
+  <div class="app-icon" onclick="goToPage('moments')">
+    <span>朋友圈</span>
+  </div>
+  <div class="app-icon" onclick="goToPage('profile')">
+    <span>个人主页</span>
+  </div>
+</div>
