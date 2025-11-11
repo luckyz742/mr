@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WeChat 朋友圈</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeChat 聊天</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="wechat-app">
-
-    <!-- 顶部导航栏 -->
-    <div class="wechat-header">
-      <h2>朋友圈</h2>
+  <div class="chat-container">
+    <!-- 顶部栏 -->
+    <div class="chat-header">
+      <div class="back-btn">←</div>
+      <div class="chat-title">WeChat 聊天</div>
     </div>
 
-    <!-- 自己的背景 + 头像 -->
-    <div class="moment-header">
-      <img src="../../images/bg.jpg" alt="背景" class="moment-bg">
-      <div class="avatar-section">
-        <img src="../../images/avatar.jpg" alt="我的头像" class="avatar">
-        <span class="username">我自己</span>
-      </div>
+    <!-- 聊天区域 -->
+    <div class="chat-box" id="chatBox">
+      <!-- 聊天内容动态插入 -->
     </div>
 
-    <!-- 动态内容区 -->
-    <div class="moments-list" id="momentsList">
-      <!-- 动态项会通过JS生成 -->
+    <!-- 输入区域 -->
+    <div class="chat-input">
+      <button id="moreBtn">＋</button>
+      <input type="text" id="msgInput" placeholder="输入消息..." />
+      <button id="sendBtn" class="send">✈️</button>
     </div>
 
-    <!-- 底部导航栏 -->
-    <div class="bottom-nav">
-      <button class="active">朋友圈</button>
-      <button>联系人</button>
-      <button>我的</button>
+    <!-- 更多功能菜单 -->
+    <div class="more-menu" id="moreMenu">
+      <button>表情包</button>
+      <button>转账</button>
+      <button>红包</button>
+      <button>语音通话</button>
+      <button>视频通话</button>
+      <button>送礼物</button>
+      <button>位置</button>
+      <button>一起听</button>
+      <button>图片</button>
     </div>
-
   </div>
 
   <script src="js/main.js"></script>
