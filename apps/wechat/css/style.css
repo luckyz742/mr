@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeChat 聊天</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <!-- 顶部栏 -->
+    <div class="chat-header">
+      <div class="back-btn">←</div>
+      <div class="chat-title">WeChat 聊天</div>
+    </div>
+
+    <!-- 聊天区域 -->
+    <div class="chat-box" id="chatBox">
+      <!-- 聊天内容动态插入 -->
+    </div>
+
+    <!-- 输入区域 -->
+    <div class="chat-input">
+      <button id="moreBtn">＋</button>
+      <input type="text" id="msgInput" placeholder="输入消息..." />
+      <button id="sendBtn" class="send">✈️</button>
+    </div>
+
+    <!-- 更多功能菜单 -->
+    <div class="more-menu" id="moreMenu">
+      <button>表情包</button>
+      <button>转账</button>
+      <button>红包</button>
+      <button>语音通话</button>
+      <button>视频通话</button>
+      <button>送礼物</button>
+      <button>位置</button>
+      <button>一起听</button>
+      <button>图片</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
