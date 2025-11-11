@@ -109,14 +109,26 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* 改为在顶部对齐 */
+  flex-direction: column;
+  padding-top: 80px; /* 给顶部留空，以免图标太靠上 */
 }
 
 .home-text {
   font-size: 20px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.apps {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 每行三个应用图标 */
+  gap: 20px;
+  justify-items: center;
+  padding: 0 20px; /* 给左右两边留一些间距 */
 }
 
 .app-icon {
