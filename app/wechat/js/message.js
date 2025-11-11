@@ -1,19 +1,20 @@
-// 页面切换、显示/隐藏选项菜单等
-document.addEventListener('DOMContentLoaded', function() {
-  // 控制菜单显示/隐藏
-  const plusButton = document.querySelector('.plus-button');
-  const optionsMenu = document.getElementById('optionsMenu');
-  plusButton.addEventListener('click', function() {
-    optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
-  });
+// 返回按钮的功能
+function goBack() {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById('homeScreen').style.display = 'block';  // 返回到主界面
+}
 
-  // 点击外部区域关闭菜单
-  document.addEventListener('click', function(event) {
-    if (!optionsMenu.contains(event.target) && event.target !== plusButton) {
-      optionsMenu.style.display = 'none';
-    }
-  });
-});
+// 控制显示/隐藏右上角选项菜单
+function togglePlusOptions() {
+  const plusOptionsMenu = document.getElementById('plusOptionsMenu');
+  plusOptionsMenu.style.display = plusOptionsMenu.style.display === 'block' ? 'none' : 'block';
+}
+
+// 控制显示/隐藏左侧 - 按钮的菜单
+function toggleMinusOptions() {
+  const minusOptionsMenu = document.getElementById('minusOptionsMenu');
+  minusOptionsMenu.style.display = minusOptionsMenu.style.display === 'block' ? 'none' : 'block';
+}
 
 // 发送消息
 function sendMessage() {
@@ -37,75 +38,58 @@ function sendMessage() {
   }
 }
 
-// 显示弹出菜单的功能
-function toggleOptions() {
-  const optionsMenu = document.getElementById('optionsMenu');
-  optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+// 发送表情包
+function sendEmoji() {
+  alert('发送表情包');
 }
 
-// 添加联系人
-function addContact() {
-  alert('添加联系人');
-}
-
-// 添加群聊
-function addGroup() {
-  alert('添加群聊');
-}
-
-// 摇一摇
-function shake() {
-  alert('摇一摇');
+// 发送图片
+function sendImage() {
+  alert('发送图片');
 }
 
 // 发送红包
 function sendRedPacket() {
   alert('发送红包');
-  // 实现红包功能，例如跳转到红包页面或者弹出红包界面
 }
 
 // 发送转账
 function sendTransfer() {
   alert('发送转账');
-  // 实现转账功能
-}
-
-// 发送礼物
-function sendGift() {
-  alert('送礼物');
-  // 实现送礼物功能
 }
 
 // 发送语音
 function sendVoice() {
   alert('发送语音');
-  // 实现语音功能
 }
 
-// 进行视频通话
-function sendVideo() {
-  alert('视频通话');
-  // 实现视频通话功能
+// 发起语音通话
+function sendVoiceCall() {
+  alert('语音通话');
 }
 
-// 发送位置
-function sendLocation() {
-  alert('发送位置');
-  // 实现位置功能
+// 送礼物
+function sendGift() {
+  alert('送礼物');
 }
 
-// 共享音乐
+// 一起听
 function shareMusic() {
-  alert('共享音乐');
-  // 实现共享音乐功能
+  alert('一起听');
 }
 
 // 点击外部区域时关闭菜单
 document.addEventListener('click', function(event) {
-  const optionsMenu = document.getElementById('optionsMenu');
+  const plusOptionsMenu = document.getElementById('plusOptionsMenu');
+  const minusOptionsMenu = document.getElementById('minusOptionsMenu');
   const plusButton = document.querySelector('.plus-button');
+  const minusButton = document.querySelector('.attach-button');
   
-  if (!optionsMenu.contains(event.target) && event.target !== plusButton) {
-    optionsMenu.style.display = 'none';
+  if (!plusOptionsMenu.contains(event.target) && event.target !== plusButton) {
+    plusOptionsMenu.style.display = 'none';
+  }
+  
+  if (!minusOptionsMenu.contains(event.target) && event.target !== minusButton) {
+    minusOptionsMenu.style.display = 'none';
   }
 });
