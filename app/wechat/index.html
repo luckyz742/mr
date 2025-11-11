@@ -35,5 +35,19 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    // 确保跳转到正确的页面
+    function openPage(pageName) {
+      if (pageName === 'message') {
+        window.location.href = 'message/index.html'; // 修正路径
+      } else if (pageName === 'contacts') {
+        window.location.href = 'contacts/index.html'; // 修正路径
+      } else if (pageName === 'moments') {
+        window.location.href = 'moments/index.html'; // 修正路径
+      } else if (pageName === 'profile') {
+        window.location.href = 'profile/index.html'; // 修正路径
+      }
+    }
+  </script>
 </body>
 </html>
