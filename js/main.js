@@ -45,3 +45,52 @@ function addPassword(num) {
 function deletePassword() {
   password = password.slice(0, -1); // 删除密码的最后一位
 }
+let password = "1234";  // 设置密码
+let inputPassword = "";  // 当前输入的密码
+let lockScreen = document.getElementById("lockScreen");
+let homeScreen = document.getElementById("homeScreen");
+let dots = document.getElementById("dots");
+let lockTip = document.querySelector(".lock-tip");
+
+// 处理按键输入
+function addDigit(digit) {
+  inputPassword += digit;
+  updateDots();
+  
+  // 如果密码输入正确，跳转到主屏幕
+  if (inputPassword.length === password.length) {
+    if (inputPassword === password) {
+      unlockPhone();
+    } else {
+      inputPassword = "";  // 重置输入
+      updateDots();
+      lockTip.textContent = "密码错误，请重试";
+      setTimeout(() => {
+        lockTip.textContent = "输入密码解锁";
+      }, 1500);
+    }
+  }
+}
+
+// 删除输入的最后一位
+function deleteDigit() {
+  inputPassword = inputPassword.slice(0, -1);
+  updateDots();
+}
+
+// 更新密码框的点
+function updateDots() {
+  dots.innerHTML = "";
+  for (let i = 0; i < inputPassword.length; i++) {
+    dots.innerHTML += "●";
+  }
+  for (let i = inputPassword.length; i < password.length; i++) {
+    dots.innerHTML += "○";
+  }
+}
+
+// 解锁手机
+function unlockPhone() {
+  lockScreen.style.display = "none";
+  homeScreen.style.display = "block";
+}
