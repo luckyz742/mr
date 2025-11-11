@@ -3,74 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeChat</title>
+  <title>WeChat 主界面</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="phone">
     <!-- 主屏幕 -->
     <div class="home-screen" id="homeScreen">
-      
-      <!-- 消息页面 -->
-      <div id="messages" class="page">
-        <div class="header">
-          <button class="back-button" onclick="goBack()">←</button>
-          <span>消息</span>
-          <button class="plus-button" onclick="toggleOptions()">➕</button>
-        </div>
-        <div id="optionsMenu" class="options-menu">
-          <div class="option-item" onclick="addContact()">添加联系人</div>
-          <div class="option-item" onclick="addGroup()">添加群聊</div>
-          <div class="option-item" onclick="shake()">摇一摇</div>
-        </div>
-        <div class="chat-list">
-          <!-- 聊天消息将动态添加到这里 -->
-        </div>
-        <div class="chat-input">
-          <button class="send-button" onclick="sendMessage()">➤</button>
-          <button class="attach-button" onclick="toggleOptions()">+</button>
-          <input type="text" id="messageInput" placeholder="输入消息..." />
-        </div>
-      </div>
+      <h2>WeChat</h2>
 
-      <!-- 其他页面: 联系人，朋友圈，个人主页 -->
-      <div id="contacts" class="page" style="display: none;">
-        <div class="header">
-          <button class="back-button" onclick="goBack()">←</button>
-          <span>联系人</span>
-        </div>
-        <!-- 联系人内容 -->
-      </div>
-
-      <div id="moments" class="page" style="display: none;">
-        <div class="header">
-          <button class="back-button" onclick="goBack()">←</button>
-          <span>朋友圈</span>
-        </div>
-        <!-- 朋友圈内容 -->
-      </div>
-
-      <div id="profile" class="page" style="display: none;">
-        <div class="header">
-          <button class="back-button" onclick="goBack()">←</button>
-          <span>个人主页</span>
-        </div>
-        <!-- 个人主页内容 -->
-      </div>
-
-      <!-- 底部 Dock 栏 -->
+      <!-- 底部Dock栏 -->
       <div class="dock">
-        <div class="dock-item" onclick="goToPage('messages')">
+        <div class="app-icon" onclick="openPage('messages')">
+          <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="消息" />
           <span>消息</span>
         </div>
-        <div class="dock-item" onclick="goToPage('contacts')">
+        <div class="app-icon" onclick="openPage('contacts')">
+          <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg" alt="联系人" />
           <span>联系人</span>
         </div>
-        <div class="dock-item" onclick="goToPage('moments')">
+        <div class="app-icon" onclick="openPage('moments')">
+          <img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="朋友圈" />
           <span>朋友圈</span>
         </div>
-        <div class="dock-item" onclick="goToPage('profile')">
-          <span>个人主页</span>
+        <div class="app-icon" onclick="openPage('profile')">
+          <img src="https://i.postimg.cc/zvTQRZzw/1762887687926.jpg" alt="个人主页" />
+          <span>我</span>
         </div>
       </div>
     </div>
