@@ -1,19 +1,43 @@
-// 更换头像按钮的功能
-document.querySelector('.change-avatar-btn').addEventListener('click', function() {
-  alert('头像已更换！');
-});
+// 页面跳转
+function goToPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById(page).style.display = 'block';
+}
 
-// 摇一摇按钮的功能
-document.querySelector('.shake-btn').addEventListener('click', function() {
-  alert('你摇了摇手机！');
-});
+// 返回按钮
+function goBack() {
+  window.history.back();
+}
 
-// 联系人按钮功能
-document.querySelector('.contacts-btn').addEventListener('click', function() {
-  alert('打开联系人列表！');
-});
+// 发送消息
+function sendMessage() {
+  let message = document.getElementById('messageInput').value;
+  if (message.trim() !== '') {
+    let messageContainer = document.createElement('div');
+    messageContainer.classList.add('message');
+    messageContainer.innerHTML = `<div class="message-content">${message}</div>`;
+    document.querySelector('.chat-list').appendChild(messageContainer);
+    document.getElementById('messageInput').value = '';
+  }
+}
 
-// 朋友圈按钮功能
-document.querySelector('.moments-btn').addEventListener('click', function() {
-  alert('查看朋友圈！');
-});
+// 显示和隐藏选项菜单
+function toggleOptions() {
+  let optionsMenu = document.getElementById('optionsMenu');
+  optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+}
+
+// 添加联系人
+function addContact() {
+  alert('添加联系人');
+}
+
+// 添加群聊
+function addGroup() {
+  alert('添加群聊');
+}
+
+// 摇一摇
+function shake() {
+  alert('摇一摇');
+}
