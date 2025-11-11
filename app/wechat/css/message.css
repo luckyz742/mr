@@ -1,5 +1,5 @@
 /* 消息页面样式 */
-.messages-page {
+.message-page {
   display: flex;
   flex-direction: column;
 }
