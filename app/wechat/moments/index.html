@@ -1,24 +1,31 @@
-<!-- contacts.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>联系人</title>
-  <link rel="stylesheet" href="../css/contacts.css">
+  <title>朋友圈</title>
+  <link rel="stylesheet" href="../css/moments.css">
 </head>
 <body>
-  <div class="contacts-page">
+  <div class="moments-page">
     <div class="header">
-      <span>联系人</span>
+      <span>朋友圈</span>
     </div>
-    <div class="contact-item">
-      <img src="avatar.jpg" alt="头像" class="avatar">
-      <div class="contact-info">
-        <span class="contact-name">张三</span>
-        <span class="contact-id">zhangsan123</span>
+
+    <div class="post-section">
+      <textarea placeholder="分享你的动态..."></textarea>
+      <button onclick="postMoment()">发布</button>
+    </div>
+
+    <div class="post-list">
+      <!-- 动态项 -->
+      <div class="post-item">
+        <p>今天是一个好日子！</p>
+        <span>2分钟前</span>
       </div>
     </div>
   </div>
+
+  <script src="../js/moments.js"></script>
 </body>
 </html>
