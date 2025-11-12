@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeChat</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="main-container">
+    <!-- 主屏幕 -->
+    <div class="home-screen">
+      <h2>WeChat</h2>
+      <div class="content" id="content">
+        <!-- 页面内容会在这里加载 -->
+      </div>
+    </div>
+    
+    <!-- 底部Dock栏 -->
+    <div class="dock">
+      <div class="app-icon" onclick="loadPage('message')">
+        <span>消息</span>
+      </div>
+      <div class="app-icon" onclick="loadPage('contacts')">
+        <span>联系人</span>
+      </div>
+      <div class="app-icon" onclick="loadPage('moments')">
+        <span>朋友圈</span>
+      </div>
+      <div class="app-icon" onclick="loadPage('profile')">
+        <span>我</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
