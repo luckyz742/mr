@@ -1,108 +1,273 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iPhone 主界面</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone App Simulator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="phone">
-    <!-- 锁屏界面 -->
-    <div class="lock-screen" id="lockScreen">
-      <div class="lock-info">
-        <div id="lockTime" class="lock-time">12:00</div>
-        <div id="lockDate" class="lock-date">星期一, 1月1日</div>
-      </div>
-      <div class="lock-input">
-        <div class="dots" id="dots"></div>
-      </div>
-      <div class="lock-keypad">
-        <div class="key-row">
-          <button class="key" onclick="addDigit(1)">1</button>
-          <button class="key" onclick="addDigit(2)">2</button>
-          <button class="key" onclick="addDigit(3)">3</button>
+    <div class="iphone-frame">
+        
+        <div class="status-bar" id="statusBar">
+            <span class="time">17:13</span>
+            <span class="right-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi" style="margin-left: 5px;"></i>
+                <i class="fas fa-battery-full" style="margin-left: 5px;"></i>
+            </span>
         </div>
-        <div class="key-row">
-          <button class="key" onclick="addDigit(4)">4</button>
-          <button class="key" onclick="addDigit(5)">5</button>
-          <button class="key" onclick="addDigit(6)">6</button>
+
+        <div id="lockScreenElements" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="lock-time-date" style="text-align: center; margin-top: 100px; position: absolute; width: 100%; top: 0; color: #fff;">
+                <div class="lock-time" style="font-size: 80px; font-weight: 300; line-height: 80px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);">17:13</div>
+                <div class="lock-date" style="font-size: 20px; font-weight: 500; opacity: 0.8; margin-top: 10px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);">星期三, 11月 12日</div>
+            </div>
+            <div class="lock-message">请输入您的密码</div>
+            <div class="password-indicator">
+                <div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div>
+                <div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div>
+            </div>
+            <div class="keypad">
+                <div class="key" data-value="1">1</div><div class="key" data-value="2">2</div><div class="key" data-value="3">3</div>
+                <div class="key" data-value="4">4</div><div class="key" data-value="5">5</div><div class="key" data-value="6">6</div>
+                <div class="key" data-value="7">7</div><div class="key" data-value="8">8</div><div class="key" data-value="9">9</div>
+                <div class="key placeholder"></div><div class="key" data-value="0">0</div>
+                <div class="key delete-key" data-value="delete"><i class="fas fa-backspace"></i></div>
+            </div>
         </div>
-        <div class="key-row">
-          <button class="key" onclick="addDigit(7)">7</button>
-          <button class="key" onclick="addDigit(8)">8</button>
-          <button class="key" onclick="addDigit(9)">9</button>
+
+        <div id="homeScreen" style="display: none;">
+            <div id="appGrid">
+                <div class="app-icon" data-app="porn">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg" alt="网黄 Icon"></div><span>网黄</span>
+                </div>
+                <div class="app-icon" data-app="taobao">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="桃宝 Icon"></div><span>桃宝</span>
+                </div>
+                <div class="app-icon" data-app="tiktok">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/PJ178sfk/1762874765459.jpg" alt="Tik Icon"></div><span>Tik</span>
+                </div>
+                <div class="app-icon" data-app="music">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/cLxz6bV3/1762887633550.jpg" alt="音乐 Icon"></div><span>音乐</span>
+                </div>
+                <div class="app-icon" data-app="bank">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/2jWMtvQq/1762887648746.jpg" alt="银行卡 Icon"></div><span>银行卡</span>
+                </div>
+                <div class="app-icon" data-app="meituan">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/m2NqLs6P/1762887656621.jpg" alt="丑团 Icon"></div><span>丑团</span>
+                </div>
+                <div class="app-icon" data-app="weibo">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/15Z21tMy/1762887723874.jpg" alt="围脖 Icon"></div><span>围脖</span>
+                </div>
+                <div class="app-icon" data-app="weather">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="天气 Icon"></div><span>天气</span>
+                </div>
+                <div class="app-icon" data-app="stock">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/Fsgqr4nF/1762888336704.jpg" alt="库存 Icon"></div><span>库存</span>
+                </div>
+            </div>
+            
+            <div id="appDock">
+                <div class="app-icon" data-app="wechat">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="微信 Icon"></div><span>微信</span>
+                </div>
+                <div class="app-icon" data-app="xiaoming-chat">
+                    <div class="icon-visual" style="background-color: #007aff;"><i class="fas fa-comment-alt" style="color: #fff; font-size: 30px;"></i></div>
+                    <span>小明</span>
+                </div>
+                <div class="app-icon" data-app="settings">
+                    <div class="icon-visual"><img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg" alt="设置 Icon"></div><span>设置</span>
+                </div>
+            </div>
         </div>
-        <div class="key-row">
-          <button class="key empty"></button>
-          <button class="key" onclick="addDigit(0)">0</button>
-          <button class="key delete" onclick="deleteDigit()">⌫</button>
+        
+        <div id="wechatApp" style="display: none; height: 100%;">
+            
+            <div id="wechatMessages" class="wechat-sub-view" style="display: block;">
+                <div class="header">
+                    <span class="back-to-home-btn" style="visibility: hidden;">
+                        <i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 微信
+                    </span>
+                    <span>微信</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="content" id="messageListContent" style="padding: 0; background-color: #fff;">
+                    </div>
+            </div>
+
+            <div id="wechatContacts" class="wechat-sub-view" style="display: none;">
+                <div class="header">
+                    <span class="back-to-home-btn"><i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 微信</span>
+                    <span>联系人</span>
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="content" id="contactListContent" style="padding: 0; background-color: #fff;">
+                    </div>
+            </div>
+            
+            <div id="wechatContactProfile" class="wechat-sub-view" style="display: none;">
+                <div class="header">
+                    <span class="back-to-contacts-btn" style="color: #000; font-weight: 500;">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span style="visibility: hidden;">资料</span>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="content">
+                    <div class="profile-section">
+                        <div class="profile-header-info">
+                            <div class="profile-avatar"><img src="" id="profileAvatar" alt="头像"></div>
+                            <div class="profile-details">
+                                <div class="profile-name" id="profileName"></div>
+                                <div class="profile-id" id="profileID"></div>
+                            </div>
+                        </div>
+                        <div class="profile-moments">朋友圈</div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="send-message-btn" data-action="message">发消息</button>
+                        <button class="delete-friend-btn" data-action="delete">删除好友</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="wechatMoments" class="wechat-sub-view" style="display: none;">
+                <div class="header">
+                    <span class="back-to-home-btn"><i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 微信</span>
+                    <span>发现</span>
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="content"><div style="padding: 15px;"><h3 style="color: #666;">朋友圈动态</h3></div></div>
+            </div>
+
+            <div id="wechatProfile" class="wechat-sub-view" style="display: none;">
+                <div class="header">
+                    <span class="back-to-home-btn"><i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 微信</span>
+                    <span>我</span>
+                    <i class="fas fa-cog" style="visibility: hidden;"></i>
+                </div>
+                <div class="content"><div style="padding: 15px;"><h3 style="color: #666;">个人信息</h3></div></div>
+            </div>
+
+            <div class="tab-bar">
+                <div class="tab-item active" data-view="wechatMessages"><i class="fas fa-comment-dots"></i><span>消息</span></div>
+                <div class="tab-item" data-view="wechatContacts"><i class="fas fa-address-book"></i><span>联系人</span></div>
+                <div class="tab-item" data-view="wechatMoments"><i class="fas fa-compass"></i><span>发现</span></div>
+                <div class="tab-item" data-view="wechatProfile"><i class="fas fa-user-circle"></i><span>我</span></div>
+            </div>
+            
         </div>
-      </div>
-      <div class="lock-tip">输入密码解锁</div>
+        
+        <div id="xiaomingChatView" class="wechat-sub-view" style="display: none;">
+            <div class="header" id="chatHeader">
+                <span class="back-to-messages-btn">
+                    <i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 微信
+                </span>
+                <span id="chatTitle">小明</span>
+                <i class="fas fa-ellipsis-h" style="cursor: pointer;"></i>
+            </div>
+            
+            <div class="content" style="padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+                
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-message-row received">
+                        <div class="chat-avatar"><img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="小明头像"></div>
+                        <div class="message-bubble">你好，这是重构后的聊天界面！</div>
+                    </div>
+                    <div class="chat-message-row sent">
+                        <div class="message-bubble">是的，现在头像和颜色都更规范了。</div>
+                        <div class="chat-avatar"><img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="我方头像"></div>
+                    </div>
+                </div>
+
+                <div class="chat-input-bar">
+                    <i class="fas fa-volume-up icon-btn"></i>
+                    <input type="text" id="chatInput" placeholder="请输入消息">
+                    <i class="fas fa-plus-circle icon-btn" id="showMenuBtn"></i> <i class="fas fa-paper-plane send-btn" id="sendMessageBtn"></i> <div id="chatMenu">
+                        <div class="menu-item" data-action="red-packet">
+                            <div class="menu-icon" style="color: #fa5151;"><i class="fas fa-yen-sign"></i></div>
+                            <span>红包</span>
+                        </div>
+                        <div class="menu-item" data-action="transfer">
+                            <div class="menu-icon" style="color: #f5b957;"><i class="fas fa-exchange-alt"></i></div>
+                            <span>转账</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-image"></i></div>
+                            <span>图片</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-video"></i></div>
+                            <span>视频通话</span>
+                        </div>
+                         <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-gift"></i></div>
+                            <span>送礼物</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-music"></i></div>
+                            <span>一起听</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="redPacketView" class="wechat-sub-view money-input-view" style="display: none;">
+            <div class="header">
+                <span class="back-to-chat-btn"><i class="fas fa-chevron-left"></i></span>
+                <span>发红包</span>
+                <i class="fas fa-ellipsis-h" style="visibility: hidden;"></i>
+            </div>
+            <div class="content">
+                <div class="input-label">金额 (元)</div>
+                <div class="input-container">
+                    <span style="font-size: 24px; font-weight: 500;">¥</span>
+                    <input type="number" id="redPacketAmount" placeholder="0.00">
+                </div>
+                <div class="input-label">恭喜发财，大吉大利 (备注)</div>
+                <div class="input-container" style="border-bottom: none;">
+                    <input type="text" id="redPacketNote" placeholder="例如：生日快乐" style="text-align: left; padding-left: 10px;">
+                </div>
+                <button class="send-money-btn" id="sendRedPacketBtn">塞钱进红包</button>
+            </div>
+        </div>
+
+        <div id="transferView" class="wechat-sub-view money-input-view" style="display: none;">
+            <div class="header">
+                <span class="back-to-chat-btn"><i class="fas fa-chevron-left"></i></span>
+                <span>转账</span>
+                <i class="fas fa-ellipsis-h" style="visibility: hidden;"></i>
+            </div>
+            <div class="content">
+                 <div class="input-label">金额 (元)</div>
+                <div class="input-container">
+                    <span style="font-size: 24px; font-weight: 500;">¥</span>
+                    <input type="number" id="transferAmount" placeholder="0.00">
+                </div>
+                <div class="input-label">转账说明 (备注)</div>
+                <div class="input-container" style="border-bottom: none;">
+                    <input type="text" id="transferNote" placeholder="例如：饭钱" style="text-align: left; padding-left: 10px;">
+                </div>
+                <button class="send-money-btn" id="sendTransferBtn">确认转账</button>
+            </div>
+        </div>
+        
+        <div id="memoApp" style="display: none; height: 100%;">
+             <div class="header">
+                <span class="back-to-home-btn"><i class="fas fa-chevron-left" style="margin-right: 3px;"></i> 返回</span>
+                <span>备忘录</span>
+                <i class="fas fa-plus" style="color: #007aff;"></i>
+            </div>
+            <div class="content" style="background-color: #fcf8e3; text-align: left; padding: 15px;">
+                <h3 style="color: #666; margin-top: 0; font-weight: 500;">我的列表</h3>
+            </div>
+        </div>
+        
+        <div class="home-indicator"></div>
     </div>
     
-    <!-- 主屏幕 -->
-    <div class="home-screen" id="homeScreen" style="display:none;">
-
-      <!-- 所有普通 App（每行三个） -->
-      <div class="apps">
-        <div class="app-icon" onclick="openApp('netyellow')">
-          <img src="https://i.postimg.cc/rsc8b0ct/1762874662290.jpg" alt="网黄" />
-          <span>网黄</span>
-        </div>
-        <div class="app-icon" onclick="openApp('taobao')">
-          <img src="https://i.postimg.cc/0QT3Q2s6/1762874632393.jpg" alt="桃宝" />
-          <span>桃宝</span>
-        </div>
-        <div class="app-icon" onclick="openApp('tik')">
-          <img src="https://i.postimg.cc/PJ178sfk/1762874765459.jpg" alt="Tik" />
-          <span>Tik</span>
-        </div>
-        <div class="app-icon" onclick="openApp('music')">
-          <img src="https://i.postimg.cc/cLxz6bV3/1762887633550.jpg" alt="音乐" />
-          <span>音乐</span>
-        </div>
-        <div class="app-icon" onclick="openApp('bankcard')">
-          <img src="https://i.postimg.cc/2jWMtvQq/1762887648746.jpg" alt="银行卡" />
-          <span>银行卡</span>
-        </div>
-        <div class="app-icon" onclick="openApp('choutuan')">
-          <img src="https://i.postimg.cc/m2NqLs6P/1762887656621.jpg" alt="丑团" />
-          <span>丑团</span>
-        </div>
-        <div class="app-icon" onclick="openApp('weibo')">
-          <img src="https://i.postimg.cc/15Z21tMy/1762887723874.jpg" alt="围脖" />
-          <span>围脖</span>
-        </div>
-        <div class="app-icon" onclick="openApp('weather')">
-          <img src="https://i.postimg.cc/VvXhbQsz/1762887734493.jpg" alt="天气" />
-          <span>天气</span>
-        </div>
-        <div class="app-icon" onclick="openApp('inventory')">
-          <img src="https://i.postimg.cc/Fsgqr4nF/1762888336704.jpg" alt="库存" />
-          <span>库存</span>
-        </div>
-      </div>
-
-      <!-- Dock 栏 -->
-      <div class="dock">
-        <div class="app-icon" onclick="openApp('wechat')">
-          <img src="https://i.postimg.cc/nrZH5jZm/1762874639457.jpg" alt="WeChat" />
-          <span>WeChat</span>
-        </div>
-        <div class="app-icon" onclick="openApp('memo')">
-          <img src="https://i.postimg.cc/zvTQRZzw/1762887687926.jpg" alt="备忘录" />
-          <span>备忘录</span>
-        </div>
-        <div class="app-icon" onclick="openApp('settings')">
-          <img src="https://i.postimg.cc/rsc8b0cx/1762874658378.jpg" alt="设置" />
-          <span>设置</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
